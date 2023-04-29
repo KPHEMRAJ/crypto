@@ -29,9 +29,9 @@ async function get_difficulty(myAccountBlock)
 }
 
 async function vitex_send(token_id,amount,n,count){
-    if(count==6)
+    if(count==4)
     return
-    await sleep(1500)
+    await sleep(count*1500)
     key=await get_key(n)
     am=amount
     amount=BigNumber(amount)
@@ -54,4 +54,5 @@ const myAccountBlock = new AccountBlock({
 myAccountBlock.setProvider(viteProvider).setPrivateKey(key[0]);
 await myAccountBlock.autoSetPreviousAccountBlock().catch(()=>{ return vitex_send(token_id,am,n,count+1)});
  await get_difficulty(myAccountBlock).catch(()=>{ return vitex_send(token_id,am,n,count+1)});
-await myAccountBlock.autoSend().catch((err)=>{return vitex_send(token_id,am,n,count+1)})}
+await myAccountBlock.autoSend().catch((err)=>{return vitex_send(console.log(err)
+	token_id,am,n,count+1)})}
